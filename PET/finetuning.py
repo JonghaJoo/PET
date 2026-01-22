@@ -122,8 +122,7 @@ class SelfAttention(nn.Module):
         out = out*after_mask
         out = self.fc_out(out)
         return out
-#%%
-# Transformer 블록 (Self-attention + Feed Forward)
+
 class TransformerBlock(nn.Module):
     def __init__(self, embed_size, heads,  forward_expansion,max_length):
         super(TransformerBlock, self).__init__()
@@ -143,7 +142,7 @@ class TransformerBlock(nn.Module):
         out = self.norm2(forward + x)
         return out
 #%%
-# Encoder: 변위(displacement) 데이터를 입력받아 선형투영 + 고정 positional encoding 적용
+
 class Encoder(nn.Module):
     def __init__(self, input_dim, embed_size, num_layers, heads, device, forward_expansion, max_length, output_dim, MLP_size):
         super(Encoder, self).__init__()
