@@ -9,9 +9,9 @@ from config import root
 def set_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)  # multi-GPU 환경에서 모든 GPU에 seed 설정
-    torch.backends.cudnn.deterministic = True  # cuDNN을 determinstic 모드로 설정
-    torch.backends.cudnn.benchmark = False  # cuDNN benchmarking을 off로 설정
+    torch.cuda.manual_seed_all(seed)  
+    torch.backends.cudnn.deterministic = True  
+    torch.backends.cudnn.benchmark = False  
     np.random.seed(seed)
     random.seed(seed)
 set_seed(42)
