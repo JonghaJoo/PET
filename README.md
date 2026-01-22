@@ -22,10 +22,10 @@ The generated data will be saved in the Data_npz folder.
 ### 3. Go to the PET folder to train or test the model
 The main script is PET_main.py.
 
-3-1. Run from scratch (training to testing)
+3-1. Run from scratch (training to testing)  
 Set the variables new_experiment, pre_train, and fine_tune to True.
 
-3-2. Test a pre-trained model only
+3-2. Test a pre-trained model only  
 Use the pre-trained model in the Trained_model folder.
 Set new_experiment, pre_train, and fine_tune to False, and keep test and dynamic_analysis set to True.
 
