@@ -40,7 +40,7 @@ class Loss:
         
         energy_expanded = energy[:,:,0].unsqueeze(1).expand(-1, num_chops, -1).to(device)
         deducted_line_force = lines_expanded - force_expanded
-        deducted_line_force_within_gap = (abs(deducted_line_force)<=line_gap).int()
+        deducted_line_force_within_gap = (abs(deducted_line_force)<=line_gap*0.3).int()
         deducted_line_force_binary = (deducted_line_force>=0).int()   
         lineidx_each_f = torch.diff(deducted_line_force_binary, dim=2, prepend = deducted_line_force_binary[:,:,:1]) 
         
