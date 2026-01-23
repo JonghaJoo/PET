@@ -4,7 +4,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 import random
-from backend import *
 from config import root
 def set_seed(seed):
     torch.manual_seed(seed)
