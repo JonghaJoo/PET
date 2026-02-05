@@ -1,5 +1,4 @@
 import torch
-import numpy as np
 import math
 def preprocess_data(X,y,device,step=2):
     len_tensor= torch.tensor(

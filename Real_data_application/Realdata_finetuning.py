@@ -201,7 +201,7 @@ class Transformer_finetuning(nn.Module):
         N, L, _ = x.shape  
         pad_mask = torch.ones((N, L), dtype=torch.bool, device=x.device)
         for i in range(N):
-            pad_mask[i, data_length[i]:] = False  # 각 배치별 유효한 길이 이후 
+            pad_mask[i, data_length[i]:] = False   
         pad_mask = pad_mask.unsqueeze(1).unsqueeze(2)
 
         lookahead_mask = torch.tril(torch.ones(L, L, device=x.device)).unsqueeze(0).unsqueeze(0)
@@ -293,7 +293,6 @@ class Trainer:
                 batch_indices = batch['index'].cpu().numpy()
                 output,_= self.model(src,data_length)
                 loss = self.criterion(output, true)  
-                # loss = self.criterion.combined_loss(src, output, true, energy, self.alpha, self.beta, self.mse_loss_init, self.phys_loss_init, self.phys_loss_new_init)
                 val_predictions.append(output.cpu())
                 X_val_predictions.append(src.cpu())
                 val_indices.append(batch_indices)

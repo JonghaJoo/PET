@@ -86,7 +86,6 @@ class RelativePositionalEncoding(nn.Module):
         indices = torch.clamp(indices, min=-self.max_len, max=self.max_len) + self.max_len  
         return self.relative_embeddings(indices)  
 #%%
-# Self-Attention 모듈 (multi-head attention)
 class SelfAttention(nn.Module):
     def __init__(self, embed_size, heads, max_length): 
         super(SelfAttention, self).__init__()
@@ -148,7 +147,7 @@ class Encoder(nn.Module):
         super(Encoder, self).__init__()
         self.embed_size = embed_size
         self.device     = device
-        self.input_projection = nn.Linear(input_dim, embed_size) #input의 마지막 차원이 embed_size로 선형변환됨 
+        self.input_projection = nn.Linear(input_dim, embed_size) 
         self.layers = nn.ModuleList(
             [TransformerBlock(
                 embed_size, heads, forward_expansion, max_length) 
@@ -200,7 +199,7 @@ class Transformer_finetuning(nn.Module):
         N, L, _ = x.shape  
         pad_mask = torch.ones((N, L), dtype=torch.bool, device=x.device)
         for i in range(N):
-            pad_mask[i, data_length[i]:] = False  # 각 배치별 유효한 길이 이후 
+            pad_mask[i, data_length[i]:] = False   
         pad_mask = pad_mask.unsqueeze(1).unsqueeze(2)
 
         lookahead_mask = torch.tril(torch.ones(L, L, device=x.device)).unsqueeze(0).unsqueeze(0)

@@ -1,4 +1,4 @@
-# %% 먼저 그냥하고 뒤에 PINN추가로  
+# %%
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -143,7 +143,7 @@ for i in range(len(hys_types)):
     if fine_tune:
         model = Transformer_finetuning(
             input_dim=input_dim, output_dim=output_dim,
-            embed_size=embed_size, num_layers=num_layers, #or 2
+            embed_size=embed_size, num_layers=num_layers, 
             forward_expansion=forward_expansion, heads=heads,
             MLP_size=MLP_size, device=device, max_length=max_length
         ).to(device)
@@ -222,7 +222,7 @@ for i in range(len(hys_types)):
             force_prediction = []
 
         for N in range(len(data_length_test)):
-            start_time = time.time()  # 시작 시간 기록
+            start_time = time.time()  
             Data = X_test_tensor_downsampled[N].to(device)
             nPts = len(Data)
             Data = Data.unsqueeze(0)
@@ -423,4 +423,3 @@ for i in range(len(hys_types)):
                 np.save(os.path.join(save_dir_dynamic, 'errors.npy'), errors)
       
         
-# %%
