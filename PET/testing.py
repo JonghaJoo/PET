@@ -138,7 +138,7 @@ class Force_prediction:
         self.model = model 
         self.device = device
         
-    def predict_epoch(self,data):
+    def predict_epoch(self, data):
         self.model.eval()  
         with torch.no_grad():
             output = self.model(data)

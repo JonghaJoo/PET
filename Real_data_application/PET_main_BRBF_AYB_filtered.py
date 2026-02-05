@@ -1,6 +1,4 @@
 import torch
-import torch.nn as nn
-import torch.optim as optim
 from torch.utils.data import DataLoader
 from Realdata_finetuning import Transformer_finetuning, TransformerDataset, Trainer, batch_padding
 import numpy as np

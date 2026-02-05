@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 from config import device
-
 # %%
 class RelativePositionalEncoding(nn.Module):
     def __init__(self, max_len, embed_size):
@@ -184,7 +183,7 @@ def batch_padding(batch):
         trg_padded = torch.zeros(len(batch), max_length, trg_batch[0].shape[-1], device=device)
     
         for i in range(len(batch)):
-            src_padded[i, :src_batch[i].shape[0], :] = src_batch[i]  # 실제 값 채우기
+            src_padded[i, :src_batch[i].shape[0], :] = src_batch[i] 
             trg_padded[i, :trg_batch[i].shape[0], :] = trg_batch[i]
         true_trg = trg_padded
         src_padded = src_padded.float()    
